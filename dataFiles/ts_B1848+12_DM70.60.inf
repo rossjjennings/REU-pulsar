@@ -1,0 +1,25 @@
+ Data file name without suffix          =  datfiles/p2030_DM70.60
+ Telescope used                         =  Arecibo
+ Instrument used                        =  pdev
+ Object being observed                  =  B1848+12
+ J2000 Right Ascension (hh:mm:ss.ssss)  =  18:51:13.1461
+ J2000 Declination     (dd:mm:ss.ssss)  =  12:59:36.2400
+ Data observed by                       =  PF
+ Epoch of observation (MJD)             =  55368.193356467010645
+ Barycentered?           (1=yes, 0=no)  =  0
+ Number of bins in the time series      =  4096000    
+ Width of each time series bin (sec)    =  6.54761904761905e-05
+ Any breaks in the data? (1=yes, 0=no)  =  1
+ On/Off bin pair #  1                   =  0          , 3952639    
+ On/Off bin pair #  2                   =  4095999    , 4095999    
+ Type of observation (EM band)          =  Radio
+ Beam diameter (arcsec)                 =  0
+ Dispersion measure (cm-3 pc)           =  70.6
+ Central freq of low channel (Mhz)      =  1214.28955078
+ Total bandwidth (Mhz)                  =  322.6171875
+ Number of channels                     =  960
+ Channel bandwidth (Mhz)                =  0.336059570312
+ Data analyzed by                       =  lgs23
+ Any additional notes:
+    Project ID p2030, Date: 2010-06-21T04:38:19.
+
