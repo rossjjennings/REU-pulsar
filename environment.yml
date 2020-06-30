@@ -1,0 +1,9 @@
+name: reu-pulsar
+channels:
+  - conda-forge
+dependencies:
+  - numpy
+  - scipy
+  - matplotlib
+  - astropy
+  - six
