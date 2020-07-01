@@ -132,6 +132,20 @@ def getChannelTOA(data,bins,freqChannel):
     return (tauhat + 1024)*dt
 
 
+def fft_roll(a, shift):
+    '''
+    Roll array by a given (possibly fractional) amount, in bins.
+    Works by multiplying the FFT of the input array by exp(-2j*pi*shift*f)
+    and Fourier transforming back. The sign convention matches that of 
+    numpy.roll() -- positive shift is toward the end of the array.
+    This is the reverse of the convention used by pypulse.utils.fftshift().
+    If the array has more than one axis, the last axis is shifted.
+    '''
+    try:
+        shift = shift[...,np.newaxis]
+    except (TypeError, IndexError): pass
+    phase = -2j*np.pi*shift*np.fft.rfftfreq(a.shape[-1])
+    return np.fft.irfft(np.fft.rfft(a)*np.exp(phase))
 
 
 def dedisperse(data,bins,freqs,trialDM):
@@ -140,13 +154,10 @@ def dedisperse(data,bins,freqs,trialDM):
     dt = bins[1] - bins[0]
     period = bins[-1] #? + dt
 
-    for i,freq in enumerate(freqs): #index must be flipped?
-        tshift = (DMdelay(freq,trialDM) % period)
-        bshift = -tshift/dt
-        sp = SP.SinglePulse(data[i])
-        shiftdata = sp.shiftit(bshift)
-        retval[i,:] = shiftdata#Data()
-    return retval
+    tshifts = (DMdelay(freqs,trialDM) % period)
+    bshifts = -tshifts/dt
+    shiftdata = fft_roll(data, bshifts)
+    return shiftdata
 
 
 
