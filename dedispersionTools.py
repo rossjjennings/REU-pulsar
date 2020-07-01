@@ -72,6 +72,18 @@ def plot_pulseAmplitudes(data,bins,freqs):
     ax1.set_xticklabels([])
     ax1.set_ylabel("Frequency (GHz)")
 
+    dt = freqs[1] - freqs[0]
+
+    def freq2chan(freq):
+        chan = (freq - freqs[0])/dt
+        return chan
+
+    def chan2freq(chan):
+        freq = freqs[0] + chan*dt
+        return freq
+    
+    ax1_secondary = ax1.secondary_yaxis('right', functions=(freq2chan, chan2freq))
+    ax1_secondary.set_ylabel('Channel number')
 
     ax2 = plt.subplot(gs[-1,0])
     summedprof = np.mean(data,axis=0)
