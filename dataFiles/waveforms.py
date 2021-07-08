@@ -1,13 +1,13 @@
 from __future__ import division, print_function
 
 from astropy.io import fits
+from scipy import *
 from numpy import *
 from numpy.random import *
 from numpy.random import randn
 from numpy.fft import *
 from matplotlib import *
 from matplotlib.pyplot import *
-from scipy import *
 #from scipy.optimize import *
 import scipy.optimize as spo
 from scipy import stats
